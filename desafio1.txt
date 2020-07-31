@@ -1,0 +1,448 @@
+﻿
+Parte 1
+
+
+
+
+1. CREATE DATABASE posts;
+
+RETURN = CREATE DATABASE
+
+
+
+2. CREATE TABLE post(
+
+id SERIAL,
+
+nombre_de_usuario VARCHAR(50),
+
+fecha_de_creación DATE,
+
+contenido VARCHAR,
+
+descripción VARCHAR,
+
+PRIMARY KEY (id)
+
+);
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción 
+
+----+-------------------+-------------------+-----------+-------------
+
+(0 rows)
+
+
+
+3. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción) VALUES ('Pamela','20-07-2020','Post N° 1 de Pamela','Herramientas digitales');
+
+INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción) VALUES ('Pamela','20-07-2020','Post N° 2 de Pamela','Herramientas digitales 2');
+
+INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción) VALUES ('Carlos','18-07-2020','Post N° 1 Carlos','Back-end'); 
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción 
+
+----+-------------------+-------------------+---------------------+--------------------------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2
+
+3 | Carlos | 2020-07-18 | Post N° 1 Carlos | Back-end
+
+(3 rows)
+
+
+
+4. ALTER TABLE post
+
+ADD titulo VARCHAR(30);
+
+RETURN = ALTER TABLE
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción | titulo 
+
+----+-------------------+-------------------+---------------------+--------------------------+--------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales | 
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2 | 
+
+3 | Carlos | 2020-07-18 | Post N° 1 Carlos | Back-end | 
+
+(3 rows)
+
+
+
+5. UPDATE post SET titulo='Nuevas herramientas digitales' WHERE id=1;
+
+UPDATE post SET titulo='Herramientas para noobs' WHERE id=2;
+
+UPDATE post SET titulo='Nuevas metodologias back-end' WHERE id=3;
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción | titulo 
+
+---+-------------------+-------------------+---------------------+--------------------------+-------------------------------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales | Nuevas herramientas digitales
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+
+3 | Carlos | 2020-07-18 | Post N° 1 Carlos | Back-end | Nuevas metodologias back-end
+
+(3 rows)
+
+
+
+6. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Pedro','19-07-2020','Post N° 1 de Pedro','Musica y programacion','Musica en ruby');
+
+INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Pedro','20-07-2020','Post N° 2 de Pedro','Musica y programacion','Programando musica');
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción | titulo 
+
+----+-------------------+-------------------+---------------------+--------------------------+-------------------------------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales | Nuevas herramientas digitales
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+
+3 | Carlos | 2020-07-18 | Post N° 1 Carlos | Back-end | Nuevas metodologias back-end
+
+4 | Pedro | 2020-07-19 | Post N° 1 de Pedro | Musica y programacion | Musica en ruby
+
+5 | Pedro | 2020-07-20 | Post N° 2 de Pedro | Musica y programacion | Programando musica
+
+(5 rows)
+
+
+
+7. DELETE FROM post WHERE id=3;
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción | titulo 
+
+----+-------------------+-------------------+---------------------+--------------------------+-------------------------------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales | Nuevas herramientas digitales
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+
+4 | Pedro | 2020-07-19 | Post N° 1 de Pedro | Musica y programacion | Musica en ruby
+
+5 | Pedro | 2020-07-20 | Post N° 2 de Pedro | Musica y programacion | Programando musica
+
+(4 rows)
+
+
+
+8. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Carlos','21-07-2020','Post N° 2 de Carlos','Back-end','Mejorar experiencia de usuario');
+
+
+
+SELECT * FROM post; => id | nombre_de_usuario | fecha_de_creación | contenido | descripción | titulo 
+
+----+-------------------+-------------------+---------------------+--------------------------+--------------------------------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales | Nuevas herramientas digitales
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+
+4 | Pedro | 2020-07-19 | Post N° 1 de Pedro | Musica y programacion | Musica en ruby
+
+5 | Pedro | 2020-07-20 | Post N° 2 de Pedro | Musica y programacion | Programando musica
+
+6 | Carlos | 2020-07-21 | Post N° 2 de Carlos | Back-end | Mejorar experiencia de usuario
+
+(5 rows)
+
+
+
+Parte 2
+
+
+
+9. CREATE TABLE comentarios(
+
+id SERIAL,
+
+fecha_de_creación TIMESTAMP,
+
+contenido VARCHAR,
+
+id_post INT,
+
+PRIMARY KEY (id),
+
+FOREIGN KEY (id_post) REFERENCES post(id)
+
+);
+
+RETURN = CREATE TABLE
+
+
+
+SELECT * FROM comentarios; => id | fecha_de_creación | contenido | id_post 
+
+----+-------------------+-----------+---------
+
+(0 rows)
+
+
+
+10. INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2020 12:15','Buen trabajo',1);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2020 14:20','No me gusta tu vision del contenido',1);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('19-07-2010 11:25','Espero les guste',6);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('19-07-2010 19:25','Muchas gracias por sus comentarios',6);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2010 20:25','Si es la mejor experiencia',6);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2010 21:45','Se aceptan criticas',6);
+
+
+
+SELECT * FROM comentarios => id | fecha_de_creación | contenido | id_post 
+
+----+---------------------+-------------------------------------+---------
+
+1 | 2020-07-20 12:15:00 | Buen trabajo | 1
+
+2 | 2020-07-20 14:20:00 | No me gusta tu vision del contenido | 1
+
+3 | 2010-07-19 11:25:00 | Espero les guste | 6
+
+4 | 2010-07-19 19:25:00 | Muchas gracias por sus comentarios | 6
+
+5 | 2010-07-20 20:25:00 | Si es la mejor experiencia | 6
+
+6 | 2010-07-20 21:45:00 | Se aceptan criticas | 6
+
+(6 rows)
+
+
+
+11. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Margarita','21-07-2020','Post N° 1 de Margarita', 'es efectiva la modalidad E-learning','Modalidad E-learning');
+
+
+
+SELECT * FROM post => id | nombre_de_usuario | fecha_de_creación | contenido | descripción | titulo 
+
+----+-------------------+-------------------+------------------------+-------------------------------------+--------------------------------
+
+1 | Pamela | 2020-07-20 | Post N° 1 de pamela | Herramientas digitales | Nuevas herramientas digitales
+
+2 | Pamela | 2020-07-20 | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+
+4 | Pedro | 2020-07-19 | Post N° 1 de Pedro | Musica y programacion | Musica en ruby
+
+5 | Pedro | 2020-07-20 | Post N° 2 de Pedro | Musica y programacion | Programando musica
+
+6 | Carlos | 2020-07-21 | Post N° 2 de Carlos | Back-end | Mejorar experiencia de usuario
+
+7 | Margarita | 2020-07-21 | Post N° 1 de Margarita | es efectiva la modalidad E-learning | Modalidad E-learning
+
+(6 rows)
+
+
+
+12. INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 09:15','Todo depende del alumno al parecer',7);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 12:31','Si! es muy efectivo si todo ponen de su parte',7);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 15:25','El profesor debe ser solo guia',7);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 16:46','No estoy de acuerdo pero respeto to opinion',7);
+
+INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 19:46','Muchas gracias',7);
+
+
+
+SELECT * FROM comentarios; => id | fecha_de_creación | contenido | id_post 
+
+----+---------------------+-----------------------------------------------+---------
+
+1 | 2020-07-20 12:15:00 | Buen trabajo | 1
+
+2 | 2020-07-20 14:20:00 | No me gusta tu vision del contenido | 1
+
+3 | 2010-07-19 11:25:00 | Espero les guste | 6
+
+4 | 2010-07-19 19:25:00 | Muchas gracias por sus comentarios | 6
+
+5 | 2010-07-20 20:25:00 | Si es la mejor experiencia | 6
+
+6 | 2010-07-20 21:45:00 | Se aceptan criticas | 6
+
+7 | 2020-07-21 09:15:00 | Todo depende del alumno al parecer | 7
+
+8 | 2020-07-21 12:31:00 | Si! es muy efectivo si todo ponen de su parte | 7
+
+9 | 2020-07-21 15:25:00 | El profesor debe ser solo guia | 7
+
+10 | 2020-07-21 16:46:00 | No estoy de acuerdo pero respeto to opinion | 7
+
+11 | 2020-07-21 19:46:00 | Muchas gracias | 7
+
+(11 rows)
+Parte 1
+
+1. CREATE DATABASE posts;
+    RETURN = CREATE DATABASE
+
+2. CREATE TABLE post(
+            id SERIAL,
+            nombre_de_usuario VARCHAR(50),
+            fecha_de_creación DATE,
+            contenido VARCHAR,
+            descripción VARCHAR,
+            PRIMARY KEY (id)
+            );
+
+SELECT * FROM post; =>   id | nombre_de_usuario | fecha_de_creación | contenido | descripción 
+                        ----+-------------------+-------------------+-----------+-------------
+                        (0 rows)
+
+3. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción) VALUES ('Pamela','20-07-2020','Post N° 1 de Pamela','Herramientas digitales');
+   INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción) VALUES ('Pamela','20-07-2020','Post N° 2 de Pamela','Herramientas digitales 2');
+   INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción) VALUES ('Carlos','18-07-2020','Post N° 1 Carlos','Back-end'); 
+
+SELECT * FROM post; =>  id | nombre_de_usuario | fecha_de_creación |      contenido      |       descripción        
+                       ----+-------------------+-------------------+---------------------+--------------------------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela | Herramientas digitales
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela | Herramientas digitales 2
+                        3 | Carlos            | 2020-07-18        | Post N° 1 Carlos    | Back-end
+                        (3 rows)
+
+4. ALTER TABLE post
+   ADD titulo VARCHAR(30);
+   RETURN = ALTER TABLE
+
+SELECT * FROM post; =>  id | nombre_de_usuario | fecha_de_creación |      contenido      |       descripción        | titulo 
+                       ----+-------------------+-------------------+---------------------+--------------------------+--------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela | Herramientas digitales   | 
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela | Herramientas digitales 2 | 
+                        3 | Carlos            | 2020-07-18        | Post N° 1 Carlos    | Back-end                 | 
+                        (3 rows)
+
+5. UPDATE post SET titulo='Nuevas herramientas digitales' WHERE id=1;
+   UPDATE post SET titulo='Herramientas para noobs' WHERE id=2;
+   UPDATE post SET titulo='Nuevas metodologias back-end' WHERE id=3;
+
+SELECT * FROM post; =>  id | nombre_de_usuario | fecha_de_creación |      contenido      |       descripción        |            titulo             
+                        ---+-------------------+-------------------+---------------------+--------------------------+-------------------------------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela | Herramientas digitales   | Nuevas herramientas digitales
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+                        3 | Carlos            | 2020-07-18        | Post N° 1 Carlos    | Back-end                 | Nuevas metodologias back-end
+                        (3 rows)
+
+6. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Pedro','19-07-2020','Post N° 1 de Pedro','Musica y programacion','Musica en ruby');
+   INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Pedro','20-07-2020','Post N° 2 de Pedro','Musica y programacion','Programando musica');
+
+SELECT * FROM post; =>  id | nombre_de_usuario | fecha_de_creación |      contenido      |       descripción        |            titulo             
+                       ----+-------------------+-------------------+---------------------+--------------------------+-------------------------------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela | Herramientas digitales   | Nuevas herramientas digitales
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+                        3 | Carlos            | 2020-07-18        | Post N° 1 Carlos    | Back-end                 | Nuevas metodologias back-end
+                        4 | Pedro             | 2020-07-19        | Post N° 1 de Pedro  | Musica y programacion    | Musica en ruby
+                        5 | Pedro             | 2020-07-20        | Post N° 2 de Pedro  | Musica y programacion    | Programando musica
+                        (5 rows)
+
+7. DELETE FROM post WHERE id=3;
+
+SELECT * FROM post; =>  id | nombre_de_usuario | fecha_de_creación |      contenido      |       descripción        |            titulo             
+                       ----+-------------------+-------------------+---------------------+--------------------------+-------------------------------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela | Herramientas digitales   | Nuevas herramientas digitales
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+                        4 | Pedro             | 2020-07-19        | Post N° 1 de Pedro  | Musica y programacion    | Musica en ruby
+                        5 | Pedro             | 2020-07-20        | Post N° 2 de Pedro  | Musica y programacion    | Programando musica
+                        (4 rows)
+
+8. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Carlos','21-07-2020','Post N° 2 de Carlos','Back-end','Mejorar experiencia de usuario');
+
+SELECT * FROM post; =>  id | nombre_de_usuario | fecha_de_creación |      contenido      |       descripción        |             titulo             
+                       ----+-------------------+-------------------+---------------------+--------------------------+--------------------------------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela | Herramientas digitales   | Nuevas herramientas digitales
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela | Herramientas digitales 2 | Herramientas para noobs
+                        4 | Pedro             | 2020-07-19        | Post N° 1 de Pedro  | Musica y programacion    | Musica en ruby
+                        5 | Pedro             | 2020-07-20        | Post N° 2 de Pedro  | Musica y programacion    | Programando musica
+                        6 | Carlos            | 2020-07-21        | Post N° 2 de Carlos | Back-end                 | Mejorar experiencia de usuario
+                        (5 rows)
+
+Parte 2
+
+9.  CREATE TABLE comentarios(
+                    id SERIAL,
+                    fecha_de_creación TIMESTAMP,
+                    contenido VARCHAR,
+                    id_post INT,
+                    PRIMARY KEY (id),
+                    FOREIGN KEY (id_post) REFERENCES post(id)
+                    );
+    RETURN = CREATE TABLE
+
+SELECT * FROM comentarios; =>  id | fecha_de_creación | contenido | id_post 
+                              ----+-------------------+-----------+---------
+                               (0 rows)
+
+10. INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2020 12:15','Buen trabajo',1);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2020 14:20','No me gusta tu vision del contenido',1);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('19-07-2010 11:25','Espero les guste',6);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('19-07-2010 19:25','Muchas gracias por sus comentarios',6);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2010 20:25','Si es la mejor experiencia',6);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('20-07-2010 21:45','Se aceptan criticas',6);
+
+SELECT * FROM comentarios =>  id |  fecha_de_creación  |              contenido              | id_post 
+                             ----+---------------------+-------------------------------------+---------
+                               1 | 2020-07-20 12:15:00 | Buen trabajo                        |       1
+                               2 | 2020-07-20 14:20:00 | No me gusta tu vision del contenido |       1
+                               3 | 2010-07-19 11:25:00 | Espero les guste                    |       6
+                               4 | 2010-07-19 19:25:00 | Muchas gracias por sus comentarios  |       6
+                               5 | 2010-07-20 20:25:00 | Si es la mejor experiencia          |       6
+                               6 | 2010-07-20 21:45:00 | Se aceptan criticas                 |       6
+                                  (6 rows)
+
+11. INSERT INTO post (nombre_de_usuario,fecha_de_creación,contenido,descripción,titulo) VALUES ('Margarita','21-07-2020','Post N° 1 de Margarita', 'es efectiva la modalidad E-learning','Modalidad E-learning');
+
+SELECT * FROM post =>  id | nombre_de_usuario | fecha_de_creación |       contenido        |             descripción             |             titulo             
+                      ----+-------------------+-------------------+------------------------+-------------------------------------+--------------------------------
+                        1 | Pamela            | 2020-07-20        | Post N° 1 de pamela    | Herramientas digitales              | Nuevas herramientas digitales
+                        2 | Pamela            | 2020-07-20        | Post N° 2 de pamela    | Herramientas digitales 2            | Herramientas para noobs
+                        4 | Pedro             | 2020-07-19        | Post N° 1 de Pedro     | Musica y programacion               | Musica en ruby
+                        5 | Pedro             | 2020-07-20        | Post N° 2 de Pedro     | Musica y programacion               | Programando musica
+                        6 | Carlos            | 2020-07-21        | Post N° 2 de Carlos    | Back-end                            | Mejorar experiencia de usuario
+                        7 | Margarita         | 2020-07-21        | Post N° 1 de Margarita | es efectiva la modalidad E-learning | Modalidad E-learning
+                        (6 rows)
+
+12. INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 09:15','Todo depende del alumno al parecer',7);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 12:31','Si! es muy efectivo si todo ponen de su parte',7);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 15:25','El profesor debe ser solo guia',7);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 16:46','No estoy de acuerdo pero respeto to opinion',7);
+    INSERT INTO comentarios (fecha_de_creación,contenido,id_post) VALUES ('21-07-2020 19:46','Muchas gracias',7);
+
+SELECT * FROM comentarios; =>  id |  fecha_de_creación  |                   contenido                   | id_post 
+                              ----+---------------------+-----------------------------------------------+---------
+                                1 | 2020-07-20 12:15:00 | Buen trabajo                                  |       1
+                                2 | 2020-07-20 14:20:00 | No me gusta tu vision del contenido           |       1
+                                3 | 2010-07-19 11:25:00 | Espero les guste                              |       6
+                                4 | 2010-07-19 19:25:00 | Muchas gracias por sus comentarios            |       6
+                                5 | 2010-07-20 20:25:00 | Si es la mejor experiencia                    |       6
+                                6 | 2010-07-20 21:45:00 | Se aceptan criticas                           |       6
+                                7 | 2020-07-21 09:15:00 | Todo depende del alumno al parecer            |       7
+                                8 | 2020-07-21 12:31:00 | Si! es muy efectivo si todo ponen de su parte |       7
+                                9 | 2020-07-21 15:25:00 | El profesor debe ser solo guia                |       7
+                               10 | 2020-07-21 16:46:00 | No estoy de acuerdo pero respeto to opinion   |       7
+                               11 | 2020-07-21 19:46:00 | Muchas gracias                                |       7
+                                (11 rows)
